@@ -1,0 +1,97 @@
+[
+    {
+        "name": "#1 - Two Twin Beds",
+        "image": "1",
+        "description": "Spacious Private room #1 has peaceful garden views with 12 foot ceilings and two twin beds.",
+        "amenities": [
+            "2 Single Bed",
+            "Air Conditioning",
+            "Bathtub",
+            "Restroom"
+        ],
+        "bookedTimeSlots": [],
+        "rentPerDay": 300
+    },
+    {
+        "name": "#2 - Two Twin Beds",
+        "image": "2",
+        "description": "Room #2 is on the second floor looking over the front garden with a private balcony and 2 exposures, 2 twin beds can be combined to a king.",
+        "amenities": [
+            "2 Single Bed",
+            "Air Conditioning",
+            "Bathtub",
+            "Restroom",
+            "Balcony"
+        ],
+        "bookedTimeSlots": [],
+        "rentPerDay": 400
+    },
+    {
+        "name": "#3 - Two Twin Beds",
+        "image": "3",
+        "description": "Room #3 faces a quiet gardens area has a large 2 mirrored walls 2 open exposures, two twin beds than can combine into a king",
+        "amenities": [
+            "2 Single Bed",
+            "Air Conditioning",
+            "Bathtub",
+            "Restroom"
+        ],
+        "bookedTimeSlots": [],
+        "rentPerDay": 300
+    },
+    {
+        "name": "#4 - Two Twin Beds",
+        "image": "4",
+        "description": "Room #4 is on the second floor looking over the front garden with a private balcony and 2 exposures, 2 twin beds can be combined to a king.",
+        "amenities": [
+            "2 Single Bed",
+            "Air Conditioning",
+            "Bathtub",
+            "Restroom",
+            "Balcony"
+        ],
+        "bookedTimeSlots": [],
+        "rentPerDay": 300
+    },
+    {
+        "name": "#5 - King Bedroom",
+        "image": "5",
+        "description": "The masterbedroom is a throwback to 1980's glamor, 2 mirrored walls reflect the bay views and whatever is going on in the large room bay front second floor room! There is a large private bay front balcony, gorgeous view and a massive private red bath.",
+        "amenities": [
+            "King Size Bed",
+            "Air Conditioning",
+            "Bathtub",
+            "Restroom",
+            "Balcony"
+        ],
+        "bookedTimeSlots": [],
+        "rentPerDay": 400
+    },
+    {
+        "name": "#6 - King Bedroom",
+        "image": "6",
+        "description": "The New Master Suite is a spacious and beautiful bay front second floor room with private bay front balcony and a spiral stair to a large private roof deck, gorgeous views of the bay and breathtaking sunsets.",
+        "amenities": [
+            "King Size Bed",
+            "Air Conditioning",
+            "Bathtub",
+            "Restroom",
+            "Balcony"
+        ],
+        "bookedTimeSlots": [],
+        "rentPerDay": 500
+    },
+    {
+        "name": "#7 - King Bedroom",
+        "image": "7",
+        "description": "The bay front room #7,THE STUDIO ROOM, is our largest room, opens directly to the pool deck with a king bed, private kitchenette and bath great bay /sunset views.",
+        "amenities": [
+            "King Size Bed",
+            "Air Conditioning",
+            "Bathtub",
+            "Restroom"
+        ],
+        "bookedTimeSlots": [],
+        "rentPerDay": 500
+    }
+]
