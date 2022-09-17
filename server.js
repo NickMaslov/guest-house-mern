@@ -8,6 +8,7 @@ app.use(express.json());
 
 app.use('/api/rooms/', require('./routes/roomRoutes'));
 app.use('/api/users/', require('./routes/userRoutes'));
+app.use('/api/bookings/', require('./routes/bookingsRoute'));
 
 app.get('/', (req, res) => res.send('Hello world!'));
 
