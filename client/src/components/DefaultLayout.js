@@ -1,31 +1,30 @@
-import React from 'react';
-import { Menu, Dropdown, Button, Space, Row, Col } from 'antd';
+import { Menu, Dropdown, Button, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 
 function DefaultLayout({ children }) {
     const user = JSON.parse(localStorage.getItem('user'));
 
-    const menu = (
-        <Menu>
-            <Menu.Item>
-                <a href='/'>Home</a>
-            </Menu.Item>
-            <Menu.Item>
-                <a href='/userbookings'>Bookings</a>
-            </Menu.Item>
-            <Menu.Item>
-                <a href='/admin'>Admin</a>
-            </Menu.Item>
-            <Menu.Item
-                onClick={() => {
-                    localStorage.removeItem('user');
-                    window.location.href = '/login';
-                }}
-            >
-                <li style={{ color: 'orangered' }}>Logout</li>
-            </Menu.Item>
-        </Menu>
-    );
+    const items = [
+        { label: <a href='/'>Home</a>, key: 'home' },
+        { label: <a href='/userbookings'>Bookings</a>, key: 'bookings' },
+        { label: <a href='/admin'>Admin</a>, key: 'admin' },
+        {
+            label: (
+                <span
+                    style={{ color: 'red' }}
+                    onClick={() => {
+                        localStorage.removeItem('user');
+                        window.location.href = '/login';
+                    }}
+                >
+                    Logout
+                </span>
+            ),
+            key: 'logout',
+        },
+    ];
+
+    const menu = <Menu items={items} />;
 
     return (
         <div>
@@ -37,10 +36,8 @@ function DefaultLayout({ children }) {
                                 <Link to='/'>Guest House</Link>
                             </h1>
 
-                            <Dropdown overlay={menu} placement='bottomCenter'>
-                                <Space>
-                                    <Button>{user && user.username}</Button>
-                                </Space>
+                            <Dropdown overlay={menu} placement='bottom'>
+                                <Button>{user && user.username}</Button>
                             </Dropdown>
                         </div>
                     </Col>

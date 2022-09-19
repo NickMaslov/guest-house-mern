@@ -4,9 +4,11 @@ import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import { getAllRooms } from '../redux/actions/roomsActions';
 import DefaultLayout from '../components/DefaultLayout';
+import Spinner from '../components/Spinner';
 
 function Home() {
     const { rooms } = useSelector((state) => state.roomsReducer);
+    const { loading } = useSelector((state) => state.alertsReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -15,6 +17,7 @@ function Home() {
 
     return (
         <DefaultLayout>
+            {loading == true && <Spinner />}
             <Row justify='center' gutter={16}>
                 {rooms.map((room) => {
                     return (

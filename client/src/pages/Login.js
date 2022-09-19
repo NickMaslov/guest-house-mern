@@ -3,13 +3,15 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { Row, Col, Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '../redux/actions/userActions';
 import DefaultLayout from '../components/DefaultLayout';
+import Spinner from '../components/Spinner';
 AOS.init();
 
 function Login() {
     const dispatch = useDispatch();
+    const { loading } = useSelector((state) => state.alertsReducer);
     function onFinish(values) {
         dispatch(userLogin(values));
         console.log(values);
@@ -17,6 +19,7 @@ function Login() {
 
     return (
         <DefaultLayout>
+            {loading && <Spinner />}
             <div className='login'>
                 <Row gutter={16} className='d-flex align-items-center'>
                     <Col lg={16} style={{ position: 'relative' }}>
