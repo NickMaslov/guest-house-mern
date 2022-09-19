@@ -21,14 +21,17 @@ h1 {
   font-weight: bold;
   color: orangered;
 }
+a{
+  color: orangered !important;
+}
 
 .header {
   padding: 10px;
 }
 
-/* .content {
+.content {
   min-height: 90vh;
-} */
+}
 .ant-row{
   margin: 0 20 !important;
 }
@@ -51,6 +54,26 @@ p{
 }
 button{
   padding: 3px 10px !important;
+}
+
+.header .ant-btn{
+  box-shadow: none !important;
+  background-color : white !important;
+  color: orangered !important;
+  border: 1px solid orangered !important;
+  padding: 5px 15px !important;
+  outline: none !important;
+}
+
+.spinner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+}
+.footer{
+  background-color: aliceblue;
+  padding: 10px;
 }
 
 /* Home */
