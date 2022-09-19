@@ -1,12 +1,11 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { Row, Col, Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../redux/actions/userActions';
 import DefaultLayout from '../components/DefaultLayout';
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-
 AOS.init();
 
 function Login() {
@@ -26,6 +25,7 @@ function Login() {
                             data-aos='slide-right'
                             data-aos-duration='1500'
                             src={'assets/home.webp'}
+                            alt=''
                         />
                         <h1 className='login-logo'>GUEST HOUSE</h1>
                     </Col>
