@@ -22,8 +22,23 @@ export const addRoom = (reqObj) => async (dispatch) => {
         dispatch({ type: 'LOADING', payload: false });
         message.success('New room added successfully');
         setTimeout(() => {
-            window.location.href = '/';
-            // window.location.href='/admin'
+            window.location.href = '/admin';
+        }, 500);
+    } catch (error) {
+        console.log(error);
+        dispatch({ type: 'LOADING', payload: false });
+    }
+};
+
+export const editRoom = (reqObj) => async (dispatch) => {
+    dispatch({ type: 'LOADING', payload: true });
+    try {
+        await axios.put('/api/rooms/editroom', reqObj);
+
+        dispatch({ type: 'LOADING', payload: false });
+        message.success('Room details updated successfully');
+        setTimeout(() => {
+            window.location.href = '/admin';
         }, 500);
     } catch (error) {
         console.log(error);

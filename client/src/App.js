@@ -7,6 +7,7 @@ import BookingRoom from './pages/BookingRoom';
 import UserBookings from './pages/UserBookings';
 import AddRoom from './pages/AddRoom';
 import AdminHome from './pages/AdminHome';
+import EditRoom from './pages/EditRoom';
 
 function App() {
     const protectedRoute = (element) =>
@@ -37,6 +38,11 @@ function App() {
                         path='/addroom'
                         exact
                         element={protectedRoute(<AddRoom />)}
+                    />
+                    <Route
+                        path='/editroom/:roomId'
+                        exact
+                        element={protectedRoute(<EditRoom />)}
                     />
                     <Route
                         path='/admin'

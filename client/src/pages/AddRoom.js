@@ -14,7 +14,7 @@ function AddRoom() {
         values.amenities = values.amenities.split(', ');
 
         dispatch(addRoom(values));
-        console.log(values);
+        // console.log(values);
     }
 
     return (

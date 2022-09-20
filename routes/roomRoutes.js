@@ -21,6 +21,16 @@ router.post('/addroom', async (req, res) => {
     }
 });
 
+router.put('/editroom', async (req, res) => {
+    try {
+        await Room.findByIdAndUpdate({ _id: req.body._id }, req.body);
+
+        res.send('Room details updated successfully');
+    } catch (error) {
+        return res.status(400).json(error);
+    }
+});
+
 router.post('/deleteroom', async (req, res) => {
     try {
         await Room.findOneAndDelete({ _id: req.body.roomId });
