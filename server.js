@@ -11,8 +11,6 @@ app.use('/api/rooms/', require('./routes/roomRoutes'));
 app.use('/api/users/', require('./routes/userRoutes'));
 app.use('/api/bookings/', require('./routes/bookingRoutes'));
 
-app.get('/', (req, res) => res.send('Hello world!'));
-
 const path = require('path');
 
 if (process.env.NODE_ENV === 'production') {
