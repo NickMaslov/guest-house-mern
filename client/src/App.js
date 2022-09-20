@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import BookingRoom from './pages/BookingRoom';
 import UserBookings from './pages/UserBookings';
+import AddRoom from './pages/AddRoom';
 
 function App() {
     const protectedRoute = (element) =>
@@ -30,6 +31,11 @@ function App() {
                         path='/userbookings'
                         exact
                         element={protectedRoute(<UserBookings />)}
+                    />
+                    <Route
+                        path='/addroom'
+                        exact
+                        element={protectedRoute(<AddRoom />)}
                     />
                 </Routes>
             </BrowserRouter>
