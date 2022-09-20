@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row, Form, Input } from 'antd';
 import DefaultLayout from '../components/DefaultLayout';
 import Spinner from '../components/Spinner';
-import { addRoom, editRoom, getAllRooms } from '../redux/actions/roomActions';
+import { editRoom, getAllRooms } from '../redux/actions/roomActions';
 
 function EditRoom() {
     const { roomId } = useParams();
@@ -13,21 +13,20 @@ function EditRoom() {
     const { loading } = useSelector((state) => state.alertsReducer);
     const [room, setRoom] = useState({});
     const [totalRooms, setTotalRooms] = useState([]);
+
     useEffect(() => {
-        if (rooms.length == 0) {
+        if (rooms.length === 0) {
             dispatch(getAllRooms());
         } else {
             setTotalRooms(rooms);
             setRoom(rooms.find((o) => o._id === roomId));
-            // console.log(room);
         }
-    }, [room]);
+    }, [room, rooms, roomId, dispatch]);
 
     function onFinish(values) {
         values._id = room._id;
 
         dispatch(editRoom(values));
-        // console.log(values);
     }
 
     return (

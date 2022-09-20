@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import DefaultLayout from '../components/DefaultLayout';
 import { deleteRoom, getAllRooms } from '../redux/actions/roomActions';
-import { Col, Row, Divider, DatePicker, Checkbox, Edit } from 'antd';
+import { Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
-import moment from 'moment';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Popconfirm, message } from 'antd';
-const { RangePicker } = DatePicker;
+import { Popconfirm } from 'antd';
 
 function AdminHome() {
     const { rooms } = useSelector((state) => state.roomsReducer);
@@ -18,7 +16,7 @@ function AdminHome() {
 
     useEffect(() => {
         dispatch(getAllRooms());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         setTotalRooms(rooms);
@@ -37,61 +35,67 @@ function AdminHome() {
                 </Col>
             </Row>
 
-            {loading == true && <Spinner />}
+            {loading ? (
+                <Spinner />
+            ) : (
+                <Row justify='center' gutter={16}>
+                    {totalRooms.map((room) => {
+                        return (
+                            <Col xl={6} lg={8} sm={12} xs={24} key={room._id}>
+                                <div className='room p-2 bs1'>
+                                    <img
+                                        src={`../assets/${room.image}.webp`}
+                                        alt=''
+                                        className='roomimg'
+                                    />
 
-            <Row justify='center' gutter={16}>
-                {totalRooms.map((room) => {
-                    return (
-                        <Col xl={6} lg={8} sm={12} xs={24} key={room._id}>
-                            <div className='room p-2 bs1'>
-                                <img
-                                    src={`../assets/${room.image}.webp`}
-                                    className='roomimg'
-                                />
+                                    <div className='room-content d-flex align-items-center justify-content-between'>
+                                        <div className='text-left pl-2'>
+                                            <p>{room.name}</p>
+                                            <p>
+                                                Rent Per Day {room.rentPerDay}{' '}
+                                                /-
+                                            </p>
+                                        </div>
 
-                                <div className='room-content d-flex align-items-center justify-content-between'>
-                                    <div className='text-left pl-2'>
-                                        <p>{room.name}</p>
-                                        <p>Rent Per Day {room.rentPerDay} /-</p>
-                                    </div>
+                                        <div className='mr-4'>
+                                            <Link to={`/editroom/${room._id}`}>
+                                                <EditOutlined
+                                                    className='mr-3'
+                                                    style={{
+                                                        color: 'green',
+                                                        cursor: 'pointer',
+                                                    }}
+                                                />
+                                            </Link>
 
-                                    <div className='mr-4'>
-                                        <Link to={`/editroom/${room._id}`}>
-                                            <EditOutlined
-                                                className='mr-3'
-                                                style={{
-                                                    color: 'green',
-                                                    cursor: 'pointer',
+                                            <Popconfirm
+                                                title='Are you sure to delete this room?'
+                                                onConfirm={() => {
+                                                    dispatch(
+                                                        deleteRoom({
+                                                            roomId: room._id,
+                                                        })
+                                                    );
                                                 }}
-                                            />
-                                        </Link>
-
-                                        <Popconfirm
-                                            title='Are you sure to delete this room?'
-                                            onConfirm={() => {
-                                                dispatch(
-                                                    deleteRoom({
-                                                        roomId: room._id,
-                                                    })
-                                                );
-                                            }}
-                                            okText='Yes'
-                                            cancelText='No'
-                                        >
-                                            <DeleteOutlined
-                                                style={{
-                                                    color: 'red',
-                                                    cursor: 'pointer',
-                                                }}
-                                            />
-                                        </Popconfirm>
+                                                okText='Yes'
+                                                cancelText='No'
+                                            >
+                                                <DeleteOutlined
+                                                    style={{
+                                                        color: 'red',
+                                                        cursor: 'pointer',
+                                                    }}
+                                                />
+                                            </Popconfirm>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Col>
-                    );
-                })}
-            </Row>
+                            </Col>
+                        );
+                    })}
+                </Row>
+            )}
         </DefaultLayout>
     );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Col, Row, Divider, DatePicker, Checkbox, Modal } from 'antd';
+import { Col, Row, Divider, DatePicker, Modal } from 'antd';
 import moment from 'moment';
 import DefaultLayout from '../components/DefaultLayout';
 import Spinner from '../components/Spinner';
@@ -10,6 +10,7 @@ import { bookRoom } from '../redux/actions/bookingActions';
 import StripeCheckout from 'react-stripe-checkout';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+AOS.init();
 
 const { RangePicker } = DatePicker;
 
@@ -26,16 +27,16 @@ function BookingRoom() {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        if (rooms.length == 0) {
+        if (rooms.length === 0) {
             dispatch(getAllRooms());
         } else {
-            setRoom(rooms.find((o) => o._id == roomId));
+            setRoom(rooms.find((o) => o._id === roomId));
         }
-    }, [rooms]);
+    }, [rooms, roomId, dispatch]);
 
     useEffect(() => {
         setTotalAmount(totalDays * room.rentPerDay);
-    }, [totalDays]);
+    }, [totalDays, room.rentPerDay]);
 
     function selectTimeSlots(values) {
         setFrom(moment(values[0]).format('MMM DD yyyy'));
@@ -62,7 +63,6 @@ function BookingRoom() {
 
     return (
         <DefaultLayout>
-            {console.log('fromto: ', from, to)}
             {loading && <Spinner />}
             <Row
                 justify='center'
@@ -72,6 +72,7 @@ function BookingRoom() {
                 <Col lg={10} sm={24} xs={24} className='p-3'>
                     <img
                         src={`../assets/${room.image}.webp`}
+                        alt=''
                         className='roomimg2 bs1 w-100'
                         data-aos='flip-left'
                         data-aos-duration='1500'
@@ -133,7 +134,7 @@ function BookingRoom() {
 
                 {room.name && (
                     <Modal
-                        visible={showModal}
+                        open={showModal}
                         closable={false}
                         footer={false}
                         title='Booked time slots'
