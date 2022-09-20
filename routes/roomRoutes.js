@@ -21,4 +21,14 @@ router.post('/addroom', async (req, res) => {
     }
 });
 
+router.post('/deleteroom', async (req, res) => {
+    try {
+        await Room.findOneAndDelete({ _id: req.body.roomId });
+
+        res.send('Room deleted successfully');
+    } catch (error) {
+        return res.status(400).json(error);
+    }
+});
+
 module.exports = router;

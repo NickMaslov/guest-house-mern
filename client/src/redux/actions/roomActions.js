@@ -30,3 +30,20 @@ export const addRoom = (reqObj) => async (dispatch) => {
         dispatch({ type: 'LOADING', payload: false });
     }
 };
+
+export const deleteRoom = (reqObj) => async (dispatch) => {
+    dispatch({ type: 'LOADING', payload: true });
+
+    try {
+        await axios.post('/api/rooms/deleteroom', reqObj);
+
+        dispatch({ type: 'LOADING', payload: false });
+        message.success('Room deleted successfully');
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
+    } catch (error) {
+        console.log(error);
+        dispatch({ type: 'LOADING', payload: false });
+    }
+};
