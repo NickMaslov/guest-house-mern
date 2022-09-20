@@ -30,7 +30,6 @@ function Login() {
                             src={'assets/home.webp'}
                             alt=''
                         />
-                        <h1 className='login-logo'>GUEST HOUSE</h1>
                     </Col>
                     <Col lg={8} className='text-left p-5'>
                         <Form

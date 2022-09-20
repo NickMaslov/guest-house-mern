@@ -114,3 +114,6 @@ svg{
   height:20px !important;
   width : 20px !important;
 }
+.content {
+  padding: 0.5em;
+}
