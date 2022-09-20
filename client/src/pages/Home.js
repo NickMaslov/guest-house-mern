@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
-import { getAllRooms } from '../redux/actions/roomsActions';
+import { getAllRooms } from '../redux/actions/roomActions';
 import DefaultLayout from '../components/DefaultLayout';
 import Spinner from '../components/Spinner';
 
